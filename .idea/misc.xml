@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/elnemr/FileDownloader/app/src/main/res/drawable/ic_download.xml" value="0.2324074074074074" />
         <entry key="..\:/elnemr/FileDownloader/app/src/main/res/layout/activity_crash_report.xml" value="0.18" />
+        <entry key="..\:/elnemr/FileDownloader/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/elnemr/FileDownloader/app/src/main/res/layout/view_holder_movie.xml" value="0.22" />
       </map>
     </option>
   </component>

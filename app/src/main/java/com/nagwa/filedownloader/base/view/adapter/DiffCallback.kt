@@ -17,9 +17,6 @@ open class DiffCallback @Inject constructor() : DiffUtil.Callback() {
 
     override fun getNewListSize(): Int = newList.size
 
-    /**
-     * Simplified for now, would probably want to compare against an ID.
-     */
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean =
             !(oldItemPosition >= oldList.size || newItemPosition >= newList.size)
                     && oldList[oldItemPosition] == newList[newItemPosition]

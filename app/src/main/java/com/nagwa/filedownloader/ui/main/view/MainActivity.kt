@@ -4,15 +4,18 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.nagwa.filedownloader.R
 import com.nagwa.filedownloader.base.extension.observe
 import com.nagwa.filedownloader.base.network.model.FileResponseDto
 import com.nagwa.filedownloader.base.view.BaseActivity
+import com.nagwa.filedownloader.ui.main.adapter.movies.MoviesAdapter
 import com.nagwa.filedownloader.ui.main.viewmodel.MainViewModel
 import com.nagwa.filedownloader.ui.main.viewmodel.MainViewModelFactory
 import com.nagwa.filedownloader.utils.Constants
 import com.nagwa.filedownloader.utils.crash.CrashReportActivity
 import com.nagwa.filedownloader.utils.crash.HandleAppCrash
+import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 class MainActivity(override val layoutResourceId: Int = R.layout.activity_main) : BaseActivity() {
@@ -22,6 +25,9 @@ class MainActivity(override val layoutResourceId: Int = R.layout.activity_main) 
 
     @Inject
     lateinit var viewModel: MainViewModel
+
+    @Inject
+    lateinit var moviesAdapter: MoviesAdapter
 
     lateinit var preferences: SharedPreferences
 
@@ -35,7 +41,14 @@ class MainActivity(override val layoutResourceId: Int = R.layout.activity_main) 
             Context.MODE_PRIVATE
         )
 
+        initRecyclerView()
+
         viewModel.fetchFiles()
+    }
+
+    private fun initRecyclerView() {
+        rv_movies.layoutManager = LinearLayoutManager(this)
+        rv_movies.adapter = moviesAdapter
     }
 
     override fun setUpViewModelStateObservers() {
@@ -51,8 +64,7 @@ class MainActivity(override val layoutResourceId: Int = R.layout.activity_main) 
     }
 
     private fun showFiles(files: List<FileResponseDto>) {
-        Log.d("TAG", "showFiles: ${files.size}")
-
+        moviesAdapter.setMovies(files)
     }
 
 }
