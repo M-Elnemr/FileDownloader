@@ -5,6 +5,8 @@ import com.nagwa.filedownloader.base.network.model.FileResponseDto
 
 abstract class MoviesAdapter : RecyclerView.Adapter<MovieViewHolder>() {
 
+    abstract fun setInterface(adapterInterface: MoviesAdapterActionsInterface)
+
     abstract fun setMovies(movies: List<FileResponseDto>)
 
     abstract fun addMovies(movies: List<FileResponseDto>)

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import com.nagwa.filedownloader.R
+import com.nagwa.filedownloader.base.extension.preventDoubleClick
 import com.nagwa.filedownloader.base.network.model.FileResponseDto
 import com.nagwa.filedownloader.base.view.adapter.DiffCallback
 import javax.inject.Inject
@@ -11,6 +12,8 @@ import javax.inject.Inject
 class MoviesAdapterImpl @Inject constructor(
     private val diffCallback: DiffCallback
 ) : MoviesAdapter() {
+
+    private lateinit var moviesAdapterActionsInterface: MoviesAdapterActionsInterface
 
     private var movies: MutableList<FileResponseDto> = mutableListOf()
 
@@ -25,7 +28,16 @@ class MoviesAdapterImpl @Inject constructor(
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+        holder.itemView.setOnClickListener {
+            holder.itemView.preventDoubleClick()
+            moviesAdapterActionsInterface.onDownloadClicked(movies[position])
+        }
+
         holder.bind(movies[position])
+    }
+
+    override fun setInterface(adapterInterface: MoviesAdapterActionsInterface) {
+        moviesAdapterActionsInterface = adapterInterface
     }
 
     override fun setMovies(movies: List<FileResponseDto>) {

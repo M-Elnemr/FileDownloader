@@ -1,6 +1,8 @@
 package com.nagwa.filedownloader.base.extension
 
 import android.content.Context
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
@@ -21,4 +23,9 @@ fun View.setMargin(left: Int?, top: Int?, right: Int?, bottom: Int?) {
     )
 
     layoutParams = lp
+}
+
+fun View.preventDoubleClick() {
+    isClickable = false
+    Handler(Looper.myLooper()!!).postDelayed({ isClickable = true },500L)
 }
