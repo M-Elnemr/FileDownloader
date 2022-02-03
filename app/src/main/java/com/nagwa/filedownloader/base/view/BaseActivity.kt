@@ -3,11 +3,7 @@ package com.nagwa.filedownloader.base.view
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import com.akexorcist.localizationactivity.ui.LocalizationActivity
-import com.orhanobut.hawk.Hawk
 import dagger.android.AndroidInjection
-import kotlinx.android.synthetic.main.fragment_nav.*
 
 abstract class BaseActivity : AppCompatActivity() {
 

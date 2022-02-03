@@ -7,7 +7,6 @@ import dagger.Provides
 @Module
 class DatabaseModule {
 
-
     @Provides
     @PerApplication
     fun provideDataDao(mainDatabase: MainDatabase): DataDao =

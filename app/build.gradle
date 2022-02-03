@@ -88,4 +88,11 @@ dependencies {
     implementation "com.google.dagger:dagger-android:$dagger_version"
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+
+    //lifecycle
+    def architecture_version = "1.1.1"
+    implementation "android.arch.lifecycle:viewmodel:$architecture_version"
+    implementation "android.arch.lifecycle:livedata:$architecture_version"
+    implementation "android.arch.lifecycle:extensions:$architecture_version"
+    implementation "android.arch.lifecycle:reactivestreams:$architecture_version"
 }

@@ -1,12 +1,9 @@
-package com.nagwa.filedownloader.base.network.api
+package com.nagwa.filedownloader.ui.main.repository
 
 import com.nagwa.filedownloader.base.network.model.FileResponseDto
 import io.reactivex.Single
-import retrofit2.http.GET
 
-interface ApiInterface {
+interface MainRepository {
 
-    @GET("movies")
     fun fetchFiles(): Single<List<FileResponseDto>>
-
 }
