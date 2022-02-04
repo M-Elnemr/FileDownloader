@@ -132,6 +132,8 @@ class MainActivity(override val layoutResourceId: Int = R.layout.activity_main) 
 
             references.add(downloadManager.enqueue(request))
 
+            //TODO Update the List with Progress Percentage
+
         } catch (e: java.lang.Exception) {
             Log.d("TAG", "downloadException: $e")
             Toast.makeText(this, "download failed", Toast.LENGTH_SHORT)
