@@ -37,6 +37,5 @@ class CrashReportActivity(override val layoutResourceId: Int = R.layout.activity
     override fun setUpViewModelStateObservers() {}
 
     private fun sendError(report: String) {
-        _tv_crash!!.text = report
     }
 }

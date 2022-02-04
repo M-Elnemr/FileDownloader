@@ -67,7 +67,6 @@ class MainActivity(override val layoutResourceId: Int = R.layout.activity_main) 
 
             references.remove(referenceId)
 
-
             if (references.isEmpty()) {
                 sendNotification()
             }
@@ -124,9 +123,7 @@ class MainActivity(override val layoutResourceId: Int = R.layout.activity_main) 
 
             val request = DownloadManager.Request(Uri.parse(data.url?: ""))
             request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
-                .setAllowedOverRoaming(false)
                 .setTitle(data.name)
-                .setMimeType("application/octet-stream")
                 .setDescription("Downloading")
                 .setDestinationInExternalPublicDir(
                     Environment.DIRECTORY_MOVIES,
@@ -136,7 +133,8 @@ class MainActivity(override val layoutResourceId: Int = R.layout.activity_main) 
             references.add(downloadManager.enqueue(request))
 
         } catch (e: java.lang.Exception) {
-            Toast.makeText(this, "Image download failed.", Toast.LENGTH_SHORT)
+            Log.d("TAG", "downloadException: $e")
+            Toast.makeText(this, "download failed", Toast.LENGTH_SHORT)
                 .show()
         }
     }
